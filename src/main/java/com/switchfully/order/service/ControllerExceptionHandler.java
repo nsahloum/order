@@ -1,4 +1,4 @@
-package com.switchfully.order.api;
+package com.switchfully.order.service;
 
 import com.switchfully.order.exceptions.UnauthorizedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
