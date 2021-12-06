@@ -25,4 +25,8 @@ public class CustomerService {
     public List<CustomerDTO> getAllCustomerDTO(){
         return customerMapper.convertCustomerMapToDtoList(customerRepository.getAllCustomer());
     }
+
+    public CustomerDTO getCustomerById(String id) {
+        return customerMapper.mapToDTO(customerRepository.getCustomerById(id));
+    }
 }

@@ -20,4 +20,8 @@ public class CustomerRepository {
     public List<Customer> getAllCustomer() {
         return customers.values().stream().toList();
     }
+
+    public Customer getCustomerById(String id) {
+        return customers.get(id);
+    }
 }

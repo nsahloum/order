@@ -1,5 +1,6 @@
 package com.switchfully.order.api;
 
+import com.switchfully.order.domain.customer.Customer;
 import com.switchfully.order.service.SecurityService;
 import com.switchfully.order.service.CustomerService;
 import com.switchfully.order.service.dtos.CustomerDTO;
@@ -30,6 +31,13 @@ public class CustomerController {
     public List<CustomerDTO> getAllCustomer(@RequestHeader String authorization) {
         securityService.checkIfAdmin(authorization);
         return customerService.getAllCustomerDTO();
+    }
+
+    @GetMapping(path = "/{id}", produces = "application/json")
+    @ResponseStatus(HttpStatus.OK)
+    public CustomerDTO getCustomerById(@PathVariable("id") String id, @RequestHeader String authorization){
+        securityService.checkIfAdmin(authorization);
+        return customerService.getCustomerById(id);
     }
 
 }
