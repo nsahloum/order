@@ -1,4 +1,4 @@
-package com.switchfully.order.service;
+package com.switchfully.order.api;
 
 import com.switchfully.order.exceptions.UnauthorizedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -14,8 +14,8 @@ import static org.springframework.http.HttpStatus.FORBIDDEN;
 @ControllerAdvice
 public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(UnauthorizedException.class)
-    protected void adminNotAuthenticated(UnauthorizedException ue,
+    protected void adminNotAuthenticated(UnauthorizedException exception,
                                         HttpServletResponse response) throws IOException {
-        response.sendError(FORBIDDEN.value(), ue.getMessage());
+        response.sendError(FORBIDDEN.value(), exception.getMessage());
     }
 }

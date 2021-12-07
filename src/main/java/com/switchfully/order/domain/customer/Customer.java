@@ -6,18 +6,18 @@ import java.util.UUID;
 
 public class Customer {
     private final String id;
-    private final String firstname;
-    private final String lastname;
+    private final String firstName;
+    private final String lastName;
     private final String email;
     private final Address address;
     private final PhoneNumber phoneNumber;
     private String username;
     private String password;
 
-    public Customer(String firstname, String lastname, String email, Address address, PhoneNumber phoneNumber, String username, String password) {
+    public Customer(String firstName, String lastName, String email, Address address, PhoneNumber phoneNumber, String username, String password) {
         this.id = UUID.randomUUID().toString();
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.address = address;
         this.phoneNumber = phoneNumber;
@@ -27,8 +27,8 @@ public class Customer {
 
     public Customer(CustomerDTO customerDTO){
         this.id = customerDTO.getId();
-        this.firstname = customerDTO.getFirstname();
-        this.lastname = customerDTO.getLastname();
+        this.firstName = customerDTO.getFirstname();
+        this.lastName = customerDTO.getLastname();
         this.email = customerDTO.getEmail();
         this.address = customerDTO.getAddress();
         this.phoneNumber = customerDTO.getPhoneNumber();
@@ -56,13 +56,13 @@ public class Customer {
         return id;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
     public String getEmail() {
