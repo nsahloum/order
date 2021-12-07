@@ -88,7 +88,7 @@ As an admin user I want to add an item so I can expand the list of available ite
 ### Story 3: Order items
 As a customer I want to order one or more items.
 - An `Order` contains one or more **item groups**
-- An `item group` contains a selected item (id), an amount, and a shipping date.
+- An `item group` contains a selected item (id), an stock, and a shipping date.
     - The shipping date should be calculated automatically:
         - When we have the item in stock, the shipping date is set to the next day (of the order)
         - Otherwise the shipping date should be set to next week (day of order + 7 days)
@@ -111,7 +111,7 @@ As a customer I want to see a report of all my orders so I can get an overview o
     - The id(entifier) of the order
     - Per item group of the order
         - The name of the item
-        - The ordered amount
+        - The ordered stock
         - The total price of the item group
     - The total price of the order
 - The total price of all orders
@@ -142,11 +142,11 @@ As an admin user I want to have an overview of items and their stock resupply ur
 - To indicate the urgency of stock resupply we need to use a very business specific urgency indicator.
 - There are 3 different levels for the urgency indicator:
     - STOCK_LOW
-        - If item amount < 5
+        - If item stock < 5
     - STOCK_MEDIUM
-        - If item amount < 10
+        - If item stock < 10
     - STOCK_HIGH
-        -  If item amount >= 10
+        -  If item stock >= 10
 - The list of items should be ordered based on stock resupply urgency. Starting from most urgent to less urgent.
 - I should be able to provide a filter, selecting only the items that have a certain level.
     - E.g.: Give me the list of items with urgency indicator STOCK_LOW

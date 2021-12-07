@@ -9,14 +9,14 @@ public class ItemDTO {
     private String name;
     private String description;
     private double price;
-    private int amount;
+    private int stock;
 
-    public ItemDTO(String name, String description, double price, int amount) {
+    public ItemDTO(String name, String description, double price, int stock) {
         this.id = UUID.randomUUID().toString();
         this.name = name;
         this.description = description;
         this.price = price;
-        this.amount = amount;
+        this.stock = stock;
     }
 
     public ItemDTO(Item item) {
@@ -24,7 +24,7 @@ public class ItemDTO {
         this.name = item.getName();
         this.description = item.getDescription();
         this.price = item.getPrice();
-        this.amount = item.getAmount();
+        this.stock = item.getStock();
     }
 
     public String getId() {
@@ -55,11 +55,11 @@ public class ItemDTO {
         this.price = price;
     }
 
-    public int getAmount() {
-        return amount;
+    public int getStock() {
+        return stock;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 }
