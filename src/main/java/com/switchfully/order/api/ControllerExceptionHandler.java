@@ -14,8 +14,9 @@ import static org.springframework.http.HttpStatus.FORBIDDEN;
 @ControllerAdvice
 public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(UnauthorizedException.class)
-    protected void adminNotAuthenticated(UnauthorizedException exception,
+    protected void adminNotAuthenticated_getCustomer(UnauthorizedException exception,
                                         HttpServletResponse response) throws IOException {
         response.sendError(FORBIDDEN.value(), exception.getMessage());
     }
+
 }

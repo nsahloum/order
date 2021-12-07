@@ -13,8 +13,9 @@ public class CustomerRepository {
 
     private final Map<String, Customer> customers = new HashMap<>();
 
-    public void registerCustomer(Customer customer) {
+    public Customer registerCustomer(Customer customer) {
         customers.put(customer.getId(), customer);
+        return customer;
     }
 
     public List<Customer> getAllCustomer() {

@@ -1,5 +1,6 @@
 package com.switchfully.order.service;
 
+import com.switchfully.order.domain.customer.Customer;
 import com.switchfully.order.repository.CustomerRepository;
 import com.switchfully.order.service.dtos.CustomerDTO;
 import com.switchfully.order.service.mappers.CustomerMapper;
@@ -18,8 +19,8 @@ public class CustomerService {
     }
 
     public CustomerDTO registerCustomerDTO(CustomerDTO customerDTO) {
-        customerRepository.registerCustomer(customerMapper.mapToCustomer(customerDTO));
-        return customerDTO;
+        Customer customerSaved = customerRepository.registerCustomer(customerMapper.mapToCustomer(customerDTO));
+        return customerMapper.mapToDTO(customerSaved);
     }
 
     public List<CustomerDTO> getAllCustomerDTO(){

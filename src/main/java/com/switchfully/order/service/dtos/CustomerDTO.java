@@ -9,8 +9,8 @@ import java.util.UUID;
 
 public class CustomerDTO {
     private final String id;
-    private final String firstname;
-    private final String lastname;
+    private final String firstName;
+    private final String lastName;
     private String username;
     private final String email;
     private final Address address;
@@ -18,10 +18,10 @@ public class CustomerDTO {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
-    public CustomerDTO(String firstname, String lastname, String email, Address address, PhoneNumber phoneNumber, String password, String username) {
+    public CustomerDTO(String firstName, String lastName, String email, Address address, PhoneNumber phoneNumber, String password, String username) {
         this.id = UUID.randomUUID().toString();
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.address = address;
         this.phoneNumber = phoneNumber;
@@ -31,8 +31,8 @@ public class CustomerDTO {
 
     public CustomerDTO(Customer customer) {
         this.id = customer.getId();
-        this.firstname = customer.getFirstName();
-        this.lastname = customer.getLastName();
+        this.firstName = customer.getFirstName();
+        this.lastName = customer.getLastName();
         this.email = customer.getEmail();
         this.address = customer.getAddress();
         this.phoneNumber = customer.getPhoneNumber();
@@ -60,12 +60,12 @@ public class CustomerDTO {
         return id;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
     public String getEmail() {

@@ -27,8 +27,8 @@ public class Customer {
 
     public Customer(CustomerDTO customerDTO){
         this.id = customerDTO.getId();
-        this.firstName = customerDTO.getFirstname();
-        this.lastName = customerDTO.getLastname();
+        this.firstName = customerDTO.getFirstName();
+        this.lastName = customerDTO.getLastName();
         this.email = customerDTO.getEmail();
         this.address = customerDTO.getAddress();
         this.phoneNumber = customerDTO.getPhoneNumber();
