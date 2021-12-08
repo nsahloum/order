@@ -1,6 +1,6 @@
 package com.switchfully.order.domain.customer;
 
-import com.switchfully.order.service.dtos.CustomerDTO;
+import com.switchfully.order.service.dtos.customer.CustomerDTO;
 
 import java.util.UUID;
 
@@ -30,8 +30,8 @@ public class Customer {
         this.firstName = customerDTO.getFirstName();
         this.lastName = customerDTO.getLastName();
         this.email = customerDTO.getEmail();
-        this.address = customerDTO.getAddress();
-        this.phoneNumber = customerDTO.getPhoneNumber();
+        this.address = new Address(customerDTO.getAddress());
+        this.phoneNumber = new PhoneNumber(customerDTO.getPhoneNumber());
         this.username = customerDTO.getUsername();
         this.password = customerDTO.getPassword();
     }

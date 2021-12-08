@@ -1,4 +1,4 @@
-package com.switchfully.order.service.dtos;
+package com.switchfully.order.service.dtos.item;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.switchfully.order.domain.item.Item;

@@ -4,7 +4,7 @@ import com.switchfully.order.domain.customer.Customer;
 import com.switchfully.order.exceptions.NotUniqException;
 import com.switchfully.order.exceptions.UnauthorizedException;
 import com.switchfully.order.repository.CustomerRepository;
-import com.switchfully.order.service.dtos.CustomerDTO;
+import com.switchfully.order.service.dtos.customer.CustomerDTO;
 import com.switchfully.order.service.mappers.CustomerMapper;
 import org.springframework.stereotype.Service;
 

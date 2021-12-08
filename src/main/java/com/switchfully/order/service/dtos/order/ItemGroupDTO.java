@@ -1,26 +1,28 @@
-package com.switchfully.order.domain.item;
+package com.switchfully.order.service.dtos.order;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.switchfully.order.domain.order.ItemGroup;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
-public class ItemGroup {
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private String id;
+public class ItemGroupDTO {
     private String itemId;
     private int amount;
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private LocalDate shippingDate;
 
-    public ItemGroup(String itemId, int amount) {
-        this.id = UUID.randomUUID().toString();
+    public ItemGroupDTO(String itemId, int amount) {
         this.itemId = itemId;
         this.amount = amount;
     }
+    
+    public ItemGroupDTO(ItemGroup itemGroup){
+        this.itemId = itemGroup.getItemId();
+        this.amount = itemGroup.getAmount();
+        this.shippingDate = itemGroup.getShippingDate();
+    }
 
-    public String getId() {
-        return id;
+    public ItemGroupDTO(ItemGroupDTO itemGroupDTO) {
     }
 
     public String getItemId() {

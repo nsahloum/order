@@ -2,11 +2,9 @@ package com.switchfully.order.service;
 
 import com.switchfully.order.domain.item.Item;
 import com.switchfully.order.repository.ItemRepository;
-import com.switchfully.order.service.dtos.ItemDTO;
+import com.switchfully.order.service.dtos.item.ItemDTO;
 import com.switchfully.order.service.mappers.ItemMapper;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class ItemService {

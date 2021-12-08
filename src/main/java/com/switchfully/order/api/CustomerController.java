@@ -2,7 +2,7 @@ package com.switchfully.order.api;
 
 import com.switchfully.order.service.CustomerService;
 import com.switchfully.order.service.AdminService;
-import com.switchfully.order.service.dtos.CustomerDTO;
+import com.switchfully.order.service.dtos.customer.CustomerDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

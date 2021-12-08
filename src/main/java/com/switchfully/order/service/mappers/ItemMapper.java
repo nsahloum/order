@@ -1,7 +1,7 @@
 package com.switchfully.order.service.mappers;
 
 import com.switchfully.order.domain.item.Item;
-import com.switchfully.order.service.dtos.ItemDTO;
+import com.switchfully.order.service.dtos.item.ItemDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

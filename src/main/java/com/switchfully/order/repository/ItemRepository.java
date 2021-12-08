@@ -1,7 +1,6 @@
 package com.switchfully.order.repository;
 
 import com.switchfully.order.domain.item.Item;
-import com.switchfully.order.service.dtos.ItemDTO;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;

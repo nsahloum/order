@@ -1,4 +1,4 @@
-package com.switchfully.order.service.dtos;
+package com.switchfully.order.service.dtos.customer;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.switchfully.order.domain.customer.Address;
@@ -14,12 +14,12 @@ public class CustomerDTO {
     private final String lastName;
     private String username;
     private final String email;
-    private final Address address;
-    private final PhoneNumber phoneNumber;
+    private final AddressDTO address;
+    private final PhoneNumberDTO phoneNumber;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
-    public CustomerDTO(String firstName, String lastName, String email, Address address, PhoneNumber phoneNumber, String password, String username) {
+    public CustomerDTO(String firstName, String lastName, String email, AddressDTO address, PhoneNumberDTO phoneNumber, String password, String username) {
         this.id = UUID.randomUUID().toString();
         this.firstName = firstName;
         this.lastName = lastName;
@@ -35,8 +35,8 @@ public class CustomerDTO {
         this.firstName = customer.getFirstName();
         this.lastName = customer.getLastName();
         this.email = customer.getEmail();
-        this.address = customer.getAddress();
-        this.phoneNumber = customer.getPhoneNumber();
+        this.address = new AddressDTO(customer.getAddress());
+        this.phoneNumber = new PhoneNumberDTO(customer.getPhoneNumber());
         this.username = customer.getUsername();
         this.password = customer.getPassword();
     }
@@ -70,11 +70,11 @@ public class CustomerDTO {
     }
 
 
-    public Address getAddress() {
+    public AddressDTO getAddress() {
         return address;
     }
 
-    public PhoneNumber getPhoneNumber() {
+    public PhoneNumberDTO getPhoneNumber() {
         return phoneNumber;
     }
 

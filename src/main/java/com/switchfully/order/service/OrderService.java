@@ -1,7 +1,7 @@
 package com.switchfully.order.service;
 
 import com.switchfully.order.repository.OrderRepository;
-import com.switchfully.order.service.dtos.OrderDTO;
+import com.switchfully.order.service.dtos.order.OrderDTO;
 import com.switchfully.order.service.mappers.OrderMapper;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,9 @@
 package com.switchfully.order.service.mappers;
 
+import com.switchfully.order.domain.customer.Address;
 import com.switchfully.order.domain.customer.Customer;
-import com.switchfully.order.service.dtos.CustomerDTO;
+import com.switchfully.order.service.dtos.customer.AddressDTO;
+import com.switchfully.order.service.dtos.customer.CustomerDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -20,4 +22,5 @@ public class CustomerMapper {
     public List<CustomerDTO> convertCustomerMapToDtoList (List <Customer> customers){
         return customers.stream().map(CustomerDTO::new).collect(Collectors.toList());
     }
+
 }

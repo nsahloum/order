@@ -1,20 +1,21 @@
-package com.switchfully.order.service.dtos;
+package com.switchfully.order.service.dtos.order;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.switchfully.order.domain.item.ItemGroup;
+import com.switchfully.order.domain.order.ItemGroup;
 import com.switchfully.order.domain.order.Order;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class OrderDTO {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private String id;
-    private List<ItemGroup> itemsGroups;
+    private List<ItemGroupDTO> itemsGroups;
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private String customerId;
 
-    public OrderDTO(List<ItemGroup> itemsGroups, String customerId) {
+    public OrderDTO(List<ItemGroupDTO> itemsGroups, String customerId) {
         this.id = UUID.randomUUID().toString();
         this.itemsGroups = itemsGroups;
         this.customerId = customerId;
@@ -22,11 +23,11 @@ public class OrderDTO {
 
     public OrderDTO(Order order){
         this.id = order.getId();
-        this.itemsGroups = order.getItemGroups();
+        this.itemsGroups = order.getItemGroups().stream().map(ItemGroupDTO::new).collect(Collectors.toList());
         this.customerId = order.getCustomerId();
     }
 
-    public List<ItemGroup> getItemsGroups() {
+    public List<ItemGroupDTO> getItemsGroups() {
         return itemsGroups;
     }
 
@@ -34,7 +35,7 @@ public class OrderDTO {
         return id;
     }
 
-    public void setItemsGroups(List<ItemGroup> itemsGroups) {
+    public void setItemsGroups(List<ItemGroupDTO> itemsGroups) {
         this.itemsGroups = itemsGroups;
     }
 

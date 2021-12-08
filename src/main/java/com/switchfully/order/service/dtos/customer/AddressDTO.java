@@ -1,21 +1,21 @@
-package com.switchfully.order.domain.customer;
+package com.switchfully.order.service.dtos.customer;
 
-import com.switchfully.order.service.dtos.customer.AddressDTO;
+import com.switchfully.order.domain.customer.Address;
 
-public class Address {
+public class AddressDTO {
     private String streetName;
     private int streetNumber;
     private int postCode;
     private String city;
 
-    public Address(String streetName, int streetNumber, int postCode, String city) {
+    public AddressDTO(String streetName, int streetNumber, int postCode, String city) {
         this.streetName = streetName;
         this.streetNumber = streetNumber;
         this.postCode = postCode;
         this.city = city;
     }
 
-    public Address(AddressDTO address){
+    public AddressDTO(Address address) {
         this.streetName = address.getStreetName();
         this.streetNumber = address.getStreetNumber();
         this.postCode = address.getPostCode();

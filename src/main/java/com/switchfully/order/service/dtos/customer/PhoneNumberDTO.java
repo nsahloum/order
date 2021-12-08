@@ -1,17 +1,17 @@
-package com.switchfully.order.domain.customer;
+package com.switchfully.order.service.dtos.customer;
 
-import com.switchfully.order.service.dtos.customer.PhoneNumberDTO;
+import com.switchfully.order.domain.customer.PhoneNumber;
 
-public class PhoneNumber {
+public class PhoneNumberDTO {
     private String prefix;
     private String number;
 
-    public PhoneNumber(String prefix, String number) {
+    public PhoneNumberDTO(String prefix, String number) {
         this.prefix = prefix;
         this.number = number;
     }
 
-    public PhoneNumber(PhoneNumberDTO phoneNumber){
+    public PhoneNumberDTO(PhoneNumber phoneNumber){
         this.prefix = phoneNumber.getPrefix();
         this.number = phoneNumber.getNumber();
     }

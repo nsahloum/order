@@ -1,6 +1,6 @@
 package com.switchfully.order.domain.item;
 
-import com.switchfully.order.service.dtos.ItemDTO;
+import com.switchfully.order.service.dtos.item.ItemDTO;
 
 import java.util.UUID;
 
