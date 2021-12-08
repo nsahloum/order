@@ -12,12 +12,6 @@ public class Order {
     private List<ItemGroup> itemGroups;
     private String customerId;
 
-    public Order(List<ItemGroup> itemGroups, String customerId) {
-        this.id = UUID.randomUUID().toString();
-        this.itemGroups = itemGroups;
-        this.customerId = customerId;
-    }
-
     public Order(OrderDTO orderDTO){
         this.id = orderDTO.getId();
         this.itemGroups = orderDTO.getItemsGroups().stream().map(ItemGroup::new).collect(Collectors.toList());

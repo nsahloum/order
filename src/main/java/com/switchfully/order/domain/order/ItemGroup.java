@@ -12,11 +12,6 @@ public class ItemGroup {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private LocalDate shippingDate;
 
-    public ItemGroup(String itemId, int amount) {
-        this.itemId = itemId;
-        this.amount = amount;
-    }
-
     public ItemGroup(ItemGroupDTO itemGroupDTO) {
         this.itemId = itemGroupDTO.getItemId();
         this.amount = itemGroupDTO.getAmount();

@@ -7,6 +7,8 @@ import com.switchfully.order.service.dtos.order.OrderDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path = "/order", produces = "application/json")
 public class OrderController {
@@ -27,7 +29,7 @@ public class OrderController {
 
     @GetMapping(produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
-    public OrderDTO getOrderOfCustomerLoggedIn(@RequestHeader String authorization){
+    public List<OrderDTO> getOrderOfCustomerLoggedIn(@RequestHeader String authorization){
         CustomerDTO customerLoggedIn =  customerService.findCustomerLoggedIn(authorization);
         return orderService.getOrderOfCustomer(customerLoggedIn.getId());
     }

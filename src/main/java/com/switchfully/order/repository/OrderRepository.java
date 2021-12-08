@@ -4,6 +4,8 @@ import com.switchfully.order.domain.order.Order;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class OrderRepository {
@@ -15,7 +17,7 @@ public class OrderRepository {
         return order;
     }
 
-    public Order getOrderOfCustomer(String customerId) {
-        return orders.get(customerId);
+    public List<Order> getOrderOfCustomer(String customerId) {
+        return orders.values().stream().filter(order -> order.getCustomerId().equals(customerId)).collect(Collectors.toList());
     }
 }

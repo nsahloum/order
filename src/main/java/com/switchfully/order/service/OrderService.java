@@ -6,6 +6,7 @@ import com.switchfully.order.service.mappers.OrderMapper;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class OrderService {
@@ -32,8 +33,8 @@ public class OrderService {
         return orderMapper.mapToDTO(orderRepository.makeOrder(orderMapper.mapToOrder(orderDTO)));
     }
 
-    public OrderDTO getOrderOfCustomer(String customerId) {
-        return orderMapper.mapToDTO(orderRepository.getOrderOfCustomer(customerId));
+    public List<OrderDTO> getOrderOfCustomer(String customerId) {
+        return orderMapper.convertOrderMapToDtoList(orderRepository.getOrderOfCustomer(customerId));
     }
 
 }

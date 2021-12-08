@@ -11,14 +11,6 @@ public class Item {
     private double price;
     private int stock;
 
-    public Item(String name, String description, double price, int stock) {
-        this.id = UUID.randomUUID().toString();
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.stock = stock;
-    }
-
     public Item(ItemDTO itemDTO) {
         this.id = itemDTO.getId();
         this.name = itemDTO.getName();
