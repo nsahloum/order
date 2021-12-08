@@ -1,8 +1,10 @@
 package com.switchfully.order.service;
 
 import com.switchfully.order.domain.admin.Admin;
+import com.switchfully.order.domain.customer.Customer;
 import com.switchfully.order.exceptions.UnauthorizedException;
 import com.switchfully.order.repository.AdminRepository;
+import com.switchfully.order.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Base64;
@@ -11,10 +13,12 @@ import java.util.Base64;
 public class SecurityService {
     AdminRepository adminRepository;
     Admin admin;
+    CustomerRepository customerRepository;
 
-    public SecurityService(AdminRepository adminRepository) {
+    public SecurityService(AdminRepository adminRepository, CustomerRepository customerRepository) {
         this.adminRepository = adminRepository;
         this.admin = adminRepository.getAdmin();
+        this.customerRepository = customerRepository;
     }
 
     public void checkIfAdmin(String authorization) {

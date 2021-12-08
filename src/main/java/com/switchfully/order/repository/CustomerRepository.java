@@ -1,7 +1,6 @@
 package com.switchfully.order.repository;
 
 import com.switchfully.order.domain.customer.Customer;
-import com.switchfully.order.service.dtos.CustomerDTO;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
@@ -24,5 +23,17 @@ public class CustomerRepository {
 
     public Customer getCustomerById(String id) {
         return customers.get(id);
+    }
+
+    public Customer getCustomerByUsername(String username) {
+        return customers.values().stream()
+                .filter(customer -> customer.getUsername().equals(username))
+                .findFirst().orElse(null);
+    }
+
+    public Customer getCustomerByEmail(String email) {
+        return customers.values().stream()
+                .filter(customer -> customer.getEmail().equals(email))
+                .findFirst().orElse(null);
     }
 }
