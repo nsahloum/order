@@ -6,11 +6,6 @@ public class PhoneNumber {
     private String prefix;
     private String number;
 
-    public PhoneNumber(String prefix, String number) {
-        this.prefix = prefix;
-        this.number = number;
-    }
-
     public PhoneNumber(PhoneNumberDTO phoneNumber){
         this.prefix = phoneNumber.getPrefix();
         this.number = phoneNumber.getNumber();

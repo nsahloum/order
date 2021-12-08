@@ -14,17 +14,6 @@ public class Customer {
     private String username;
     private String password;
 
-    public Customer(String firstName, String lastName, String email, Address address, PhoneNumber phoneNumber, String username, String password) {
-        this.id = UUID.randomUUID().toString();
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        this.password = password;
-        this.username = username;
-    }
-
     public Customer(CustomerDTO customerDTO){
         this.id = customerDTO.getId();
         this.firstName = customerDTO.getFirstName();

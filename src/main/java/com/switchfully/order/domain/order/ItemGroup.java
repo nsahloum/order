@@ -9,7 +9,6 @@ import java.util.UUID;
 public class ItemGroup {
     private String itemId;
     private int amount;
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private LocalDate shippingDate;
 
     public ItemGroup(ItemGroupDTO itemGroupDTO) {

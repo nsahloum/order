@@ -10,6 +10,7 @@ public class Item {
     private String description;
     private double price;
     private int stock;
+    private ItemUrgencyIndicator itemUrgencyIndicator;
 
     public Item(ItemDTO itemDTO) {
         this.id = itemDTO.getId();
@@ -17,6 +18,7 @@ public class Item {
         this.description = itemDTO.getDescription();
         this.price = itemDTO.getPrice();
         this.stock = itemDTO.getStock();
+        this.itemUrgencyIndicator = itemDTO.getItemUrgencyIndicator();
     }
 
     public String getId() {
@@ -53,5 +55,13 @@ public class Item {
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    public ItemUrgencyIndicator getItemUrgencyIndicator() {
+        return itemUrgencyIndicator;
+    }
+
+    public void setItemUrgencyIndicator(ItemUrgencyIndicator itemUrgencyIndicator) {
+        this.itemUrgencyIndicator = itemUrgencyIndicator;
     }
 }

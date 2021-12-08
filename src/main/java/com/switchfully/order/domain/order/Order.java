@@ -1,10 +1,8 @@
 package com.switchfully.order.domain.order;
 
-import com.switchfully.order.service.dtos.order.ItemGroupDTO;
 import com.switchfully.order.service.dtos.order.OrderDTO;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class Order {
@@ -12,7 +10,7 @@ public class Order {
     private List<ItemGroup> itemGroups;
     private String customerId;
 
-    public Order(OrderDTO orderDTO){
+    public Order(OrderDTO orderDTO) {
         this.id = orderDTO.getId();
         this.itemGroups = orderDTO.getItemsGroups().stream().map(ItemGroup::new).collect(Collectors.toList());
         this.customerId = orderDTO.getCustomerId();

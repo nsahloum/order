@@ -3,7 +3,9 @@ package com.switchfully.order.repository;
 import com.switchfully.order.domain.item.Item;
 import org.springframework.stereotype.Repository;
 
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Repository
@@ -17,5 +19,9 @@ public class ItemRepository {
 
     public Item getItemById(String id){
         return availableItems.get(id);
+    }
+
+    public List<Item> getAllItems() {
+        return availableItems.values().stream().toList();
     }
 }

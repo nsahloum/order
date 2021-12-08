@@ -8,13 +8,6 @@ public class Address {
     private int postCode;
     private String city;
 
-    public Address(String streetName, int streetNumber, int postCode, String city) {
-        this.streetName = streetName;
-        this.streetNumber = streetNumber;
-        this.postCode = postCode;
-        this.city = city;
-    }
-
     public Address(AddressDTO address){
         this.streetName = address.getStreetName();
         this.streetNumber = address.getStreetNumber();
