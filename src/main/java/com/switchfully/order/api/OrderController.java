@@ -34,5 +34,4 @@ public class OrderController {
         return orderService.getOrderOfCustomer(customerLoggedIn.getId());
     }
 
-
 }
