@@ -8,6 +8,7 @@ import com.switchfully.order.domain.customer.PhoneNumber;
 import java.util.UUID;
 
 public class CustomerDTO {
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private final String id;
     private final String firstName;
     private final String lastName;
@@ -48,10 +49,6 @@ public class CustomerDTO {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     public void setPassword(String password) {
         this.password = password;
     }
@@ -79,5 +76,9 @@ public class CustomerDTO {
 
     public PhoneNumber getPhoneNumber() {
         return phoneNumber;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }

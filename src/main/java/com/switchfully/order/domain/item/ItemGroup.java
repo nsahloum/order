@@ -1,36 +1,34 @@
 package com.switchfully.order.domain.item;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.time.LocalDate;
 import java.util.UUID;
 
 public class ItemGroup {
-    private final String id;
-    private Item item;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private String id;
+    private String itemId;
     private int amount;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private LocalDate shippingDate;
 
-    public ItemGroup(Item item, int amount) {
+    public ItemGroup(String itemId, int amount) {
         this.id = UUID.randomUUID().toString();
-        this.item = item;
+        this.itemId = itemId;
         this.amount = amount;
-        if (amount <= item.getStock()){
-            this.shippingDate = LocalDate.now().plusDays(1);
-        }
-        else{
-            this.shippingDate = LocalDate.now().plusDays(7);
-        }
     }
 
     public String getId() {
         return id;
     }
 
-    public Item getItem() {
-        return item;
+    public String getItemId() {
+        return itemId;
     }
 
-    public void setItem(Item item) {
-        this.item = item;
+    public void setItemId(String itemId) {
+        this.itemId = itemId;
     }
 
     public int getAmount() {

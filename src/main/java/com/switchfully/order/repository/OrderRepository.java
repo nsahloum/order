@@ -10,8 +10,12 @@ public class OrderRepository {
     private HashMap<String, Order> orders = new HashMap<>();
 
 
-    public Order makeOrder(Order order, String customerId) {
-        orders.put(customerId, order);
+    public Order makeOrder(Order order) {
+        orders.put(order.getId(), order);
         return order;
+    }
+
+    public Order getOrderOfCustomer(String customerId) {
+        return orders.get(customerId);
     }
 }

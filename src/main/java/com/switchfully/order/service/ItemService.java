@@ -22,4 +22,8 @@ public class ItemService {
         Item itemSaved = itemRepository.addItem(itemMapper.mapToItem(itemDTO));
         return itemMapper.mapToDTO(itemSaved);
     }
+
+    public ItemDTO getItemById(String id){
+        return itemMapper.mapToDTO(itemRepository.getItemById(id));
+    }
 }

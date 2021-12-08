@@ -40,14 +40,14 @@ public class CustomerService {
         return customerMapper.mapToDTO(customerRepository.getCustomerById(id));
     }
 
-    public Customer findCustomerLoggedIn(String authorization) {
+    public CustomerDTO findCustomerLoggedIn(String authorization) {
         String decodedUsernameAndPassword = new String(Base64.getDecoder().decode(authorization.substring("Basic ".length())));
         String username = decodedUsernameAndPassword.substring(0, decodedUsernameAndPassword.indexOf(":"));
         String password = decodedUsernameAndPassword.substring(decodedUsernameAndPassword.indexOf(":") + 1);
         Customer customer = customerRepository.getCustomerByUsername(username);
         if (customer == null){
-            throw new UnauthorizedException();
+            throw new UnauthorizedException("You are not logged in");
         }
-        return customer;
+        return customerMapper.mapToDTO(customer);
     }
 }

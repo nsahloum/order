@@ -1,10 +1,12 @@
 package com.switchfully.order.service.dtos;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.switchfully.order.domain.item.Item;
 
 import java.util.UUID;
 
 public class ItemDTO {
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private final String id;
     private String name;
     private String description;

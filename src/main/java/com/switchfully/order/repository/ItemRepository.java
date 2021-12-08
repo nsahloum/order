@@ -15,4 +15,8 @@ public class ItemRepository {
         availableItems.put(item.getId(), item);
         return item;
     }
+
+    public Item getItemById(String id){
+        return availableItems.get(id);
+    }
 }

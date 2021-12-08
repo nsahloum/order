@@ -8,18 +8,18 @@ import java.util.UUID;
 
 public class Order {
     private String id;
-    private List<ItemGroup> itemsOrdered;
+    private List<ItemGroup> itemGroups;
     private String customerId;
 
-    public Order(List<ItemGroup> itemsOrdered, String customerId) {
+    public Order(List<ItemGroup> itemGroups, String customerId) {
         this.id = UUID.randomUUID().toString();
-        this.itemsOrdered = itemsOrdered;
+        this.itemGroups = itemGroups;
         this.customerId = customerId;
     }
 
     public Order(OrderDTO orderDTO){
         this.id = orderDTO.getId();
-        this.itemsOrdered = orderDTO.getItemsOrdered();
+        this.itemGroups = orderDTO.getItemsGroups();
         this.customerId = orderDTO.getCustomerId();
     }
 
@@ -27,16 +27,12 @@ public class Order {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public List<ItemGroup> getItemGroups() {
+        return itemGroups;
     }
 
-    public List<ItemGroup> getItemsOrdered() {
-        return itemsOrdered;
-    }
-
-    public void setOrder(List<ItemGroup> order) {
-        this.itemsOrdered = order;
+    public void setItemGroups(List<ItemGroup> itemGroups) {
+        this.itemGroups = itemGroups;
     }
 
     public String getCustomerId() {

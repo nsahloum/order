@@ -1,7 +1,7 @@
 package com.switchfully.order.api;
 
 import com.switchfully.order.service.ItemService;
-import com.switchfully.order.service.SecurityService;
+import com.switchfully.order.service.AdminService;
 import com.switchfully.order.service.dtos.ItemDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -10,17 +10,17 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "/items", produces = "application/json")
 public class ItemController {
     private final ItemService itemService;
-    private final SecurityService securityService;
+    private final AdminService adminService;
 
-    public ItemController(ItemService itemService, SecurityService securityService) {
+    public ItemController(ItemService itemService, AdminService adminService) {
         this.itemService = itemService;
-        this.securityService = securityService;
+        this.adminService = adminService;
     }
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public ItemDTO addItem(@RequestHeader String authorization, @RequestBody ItemDTO itemDTO) {
-        securityService.checkIfAdmin(authorization);
+        adminService.checkIfAdmin(authorization);
         return itemService.addItem(itemDTO);
     }
 

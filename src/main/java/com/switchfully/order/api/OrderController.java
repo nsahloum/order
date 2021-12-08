@@ -3,6 +3,7 @@ package com.switchfully.order.api;
 import com.switchfully.order.domain.customer.Customer;
 import com.switchfully.order.service.CustomerService;
 import com.switchfully.order.service.OrderService;
+import com.switchfully.order.service.dtos.CustomerDTO;
 import com.switchfully.order.service.dtos.OrderDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -21,9 +22,15 @@ public class OrderController {
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public OrderDTO makeOrder(@RequestBody OrderDTO orderDTO, @RequestHeader String authorization) {
-        //TODO add check customer, and find customer by username (make it uniq) and send the ID
-        Customer customer = customerService.findCustomerLoggedIn(authorization);
-        return orderService.makeOrder(orderDTO, customer.getId());
+        CustomerDTO customerLoggedIn = customerService.findCustomerLoggedIn(authorization);
+        return orderService.makeOrder(orderDTO, customerLoggedIn.getId());
+    }
+
+    @GetMapping(produces = "application/json")
+    @ResponseStatus(HttpStatus.OK)
+    public OrderDTO getOrderOfCustomerLoggedIn(@RequestHeader String authorization){
+        CustomerDTO customerLoggedIn =  customerService.findCustomerLoggedIn(authorization);
+        return orderService.getOrderOfCustomer(customerLoggedIn.getId());
     }
 
 
