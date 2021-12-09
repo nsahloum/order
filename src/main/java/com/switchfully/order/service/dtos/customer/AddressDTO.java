@@ -2,6 +2,8 @@ package com.switchfully.order.service.dtos.customer;
 
 import com.switchfully.order.domain.customer.Address;
 
+import java.util.Objects;
+
 public class AddressDTO {
     private String streetName;
     private int streetNumber;
@@ -36,5 +38,18 @@ public class AddressDTO {
 
     public String getCity() {
         return city;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AddressDTO that = (AddressDTO) o;
+        return streetNumber == that.streetNumber && postCode == that.postCode && Objects.equals(streetName, that.streetName) && Objects.equals(city, that.city);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(streetName, streetNumber, postCode, city);
     }
 }

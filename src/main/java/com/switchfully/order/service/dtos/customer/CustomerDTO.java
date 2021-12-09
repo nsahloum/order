@@ -5,6 +5,7 @@ import com.switchfully.order.domain.customer.Address;
 import com.switchfully.order.domain.customer.Customer;
 import com.switchfully.order.domain.customer.PhoneNumber;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class CustomerDTO {
@@ -80,5 +81,21 @@ public class CustomerDTO {
 
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CustomerDTO that = (CustomerDTO) o;
+        return Objects.equals(id, that.id) && Objects.equals(firstName, that.firstName)
+                && Objects.equals(lastName, that.lastName) && Objects.equals(username, that.username)
+                && Objects.equals(email, that.email) && Objects.equals(address, that.address)
+                && Objects.equals(phoneNumber, that.phoneNumber) && Objects.equals(password, that.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, username, email, address, phoneNumber, password);
     }
 }
