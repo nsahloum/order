@@ -20,7 +20,7 @@ public class OrderService {
         this.itemService = itemService;
     }
 
-    public OrderDTO makeOrder(OrderDTO orderDTO, String customerId) {
+    public OrderDTO makeOrder(OrderDTO orderDTO, int customerId) {
         orderDTO.getItemsGroups().forEach(itemGroup -> {
             if (itemService.getItemById(itemGroup.getItemId()).getStock() >= itemGroup.getAmount()){
                 itemGroup.setShippingDate(LocalDate.now().plusDays(1));
@@ -33,7 +33,7 @@ public class OrderService {
         return orderMapper.mapToDTO(orderRepository.makeOrder(orderMapper.mapToOrder(orderDTO)));
     }
 
-    public List<OrderDTO> getOrderOfCustomer(String customerId) {
+    public List<OrderDTO> getOrderOfCustomer(int customerId) {
         return orderMapper.convertOrderMapToDtoList(orderRepository.getOrderOfCustomer(customerId));
     }
 

@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public class CustomerDTO {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private final String id;
+    private int id;
     private final String firstName;
     private final String lastName;
     private String username;
@@ -21,7 +21,6 @@ public class CustomerDTO {
     private String password;
 
     public CustomerDTO(String firstName, String lastName, String email, AddressDTO address, PhoneNumberDTO phoneNumber, String password, String username) {
-        this.id = UUID.randomUUID().toString();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -54,7 +53,7 @@ public class CustomerDTO {
         this.password = password;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 

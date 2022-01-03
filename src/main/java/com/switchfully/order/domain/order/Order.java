@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public class Order {
     private final String id;
     private List<ItemGroup> itemGroups;
-    private String customerId;
+    private int customerId;
 
     public Order(OrderDTO orderDTO) {
         this.id = orderDTO.getId();
@@ -28,11 +28,11 @@ public class Order {
         this.itemGroups = itemGroups;
     }
 
-    public String getCustomerId() {
+    public int getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
+    public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
 }

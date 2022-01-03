@@ -2,19 +2,36 @@ package com.switchfully.order.domain.customer;
 
 import com.switchfully.order.service.dtos.customer.CustomerDTO;
 
-import java.util.UUID;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "customer")
 public class Customer {
-    private final String id;
-    private final String firstName;
-    private final String lastName;
-    private final String email;
-    private final Address address;
-    private final PhoneNumber phoneNumber;
+    @Id
+    @GeneratedValue(generator = "customer_seq")
+    private int id;
+
+    @Column(name = "first_name")
+    private String firstName;
+    @Column(name = "last_name")
+    private String lastName;
+    @Column(name = "email")
+    private String email;
+    @JoinColumn(name = "fk_address")
+    @ManyToOne(cascade = {CascadeType.ALL})
+    private Address address;
+    @JoinColumn(name = "fk_phone_number")
+    @ManyToOne(cascade = {CascadeType.ALL})
+    private PhoneNumber phoneNumber;
+    @Column(name = "username")
     private String username;
+    @Column(name = "password")
     private String password;
 
-    public Customer(CustomerDTO customerDTO){
+    public Customer() {
+    }
+
+    public Customer(CustomerDTO customerDTO) {
         this.id = customerDTO.getId();
         this.firstName = customerDTO.getFirstName();
         this.lastName = customerDTO.getLastName();
@@ -41,7 +58,7 @@ public class Customer {
         this.password = password;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 

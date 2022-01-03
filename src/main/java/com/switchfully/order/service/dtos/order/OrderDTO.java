@@ -13,9 +13,9 @@ public class OrderDTO {
     private String id;
     private List<ItemGroupDTO> itemsGroups;
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private String customerId;
+    private int customerId;
 
-    public OrderDTO(List<ItemGroupDTO> itemsGroups, String customerId) {
+    public OrderDTO(List<ItemGroupDTO> itemsGroups, int customerId) {
         this.id = UUID.randomUUID().toString();
         this.itemsGroups = itemsGroups;
         this.customerId = customerId;
@@ -39,11 +39,11 @@ public class OrderDTO {
         this.itemsGroups = itemsGroups;
     }
 
-    public String getCustomerId() {
+    public int getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(String customerId) {
+    public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
 }

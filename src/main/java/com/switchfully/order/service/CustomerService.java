@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Base64;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class CustomerService {
@@ -22,29 +23,32 @@ public class CustomerService {
     }
 
     public CustomerDTO registerCustomerDTO(CustomerDTO customerDTO) {
-        if (customerRepository.getCustomerByUsername(customerDTO.getUsername()) != null){
+        if (customerRepository.findCustomerByUsername(customerDTO.getUsername()) != null){
             throw new NotUniqException("Your username is not uniq");
         }
-        if (customerRepository.getCustomerByEmail(customerDTO.getEmail()) != null){
+        if (customerRepository.findCustomerByEmail(customerDTO.getEmail()) != null){
             throw new NotUniqException("Your email is not uniq");
         }
-        Customer customerSaved = customerRepository.registerCustomer(customerMapper.mapToCustomer(customerDTO));
+        Customer customerSaved = customerRepository.save(customerMapper.mapToCustomer(customerDTO));
         return customerMapper.mapToDTO(customerSaved);
     }
 
     public List<CustomerDTO> getAllCustomerDTO(){
-        return customerMapper.convertCustomerMapToDtoList(customerRepository.getAllCustomer());
+        return customerMapper.convertCustomerMapToDtoList(customerRepository.findAll());
     }
 
-    public CustomerDTO getCustomerById(String id) {
-        return customerMapper.mapToDTO(customerRepository.getCustomerById(id));
+    public CustomerDTO getCustomerById(int id) {
+        if (customerRepository.findById(id) == null){
+            throw new NoSuchElementException("No customer with this ID");
+        }
+        return customerMapper.mapToDTO(customerRepository.findById(id));
     }
 
     public CustomerDTO findCustomerLoggedIn(String authorization) {
         String decodedUsernameAndPassword = new String(Base64.getDecoder().decode(authorization.substring("Basic ".length())));
         String username = decodedUsernameAndPassword.substring(0, decodedUsernameAndPassword.indexOf(":"));
         String password = decodedUsernameAndPassword.substring(decodedUsernameAndPassword.indexOf(":") + 1);
-        Customer customer = customerRepository.getCustomerByUsername(username);
+        Customer customer = customerRepository.findCustomerByUsername(username);
         if (customer == null){
             throw new UnauthorizedException("You are not logged in");
         }

@@ -34,7 +34,7 @@ public class CustomerController {
 
     @GetMapping(path = "/{id}", produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
-    public CustomerDTO getCustomerById(@PathVariable("id") String id, @RequestHeader String authorization) {
+    public CustomerDTO getCustomerById(@PathVariable("id") int id, @RequestHeader String authorization) {
         adminService.checkIfAdmin(authorization);
         return customerService.getCustomerById(id);
     }
