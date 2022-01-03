@@ -6,7 +6,6 @@ import com.switchfully.order.service.dtos.customer.PhoneNumberDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.util.Assert;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
@@ -27,7 +26,7 @@ class CustomerControllerIntegrationTest {
                 new PhoneNumberDTO("+32", "45213211"), "pass", "user");
         customerController.registerCustomer(customerToAdd);
         List<CustomerDTO> customerDTOList = customerController.getAllCustomers(generateBase64Authorization("user", "password"));
-        assertThat(customerDTOList).containsExactly(customerToAdd);
+        assertThat(customerDTOList.get(customerDTOList.size() - 1).getUsername()).isEqualTo(customerToAdd.getUsername());
     }
 
     private String generateBase64Authorization(String username, String password) {
